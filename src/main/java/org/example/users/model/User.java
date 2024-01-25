@@ -19,13 +19,18 @@ public class User implements Serializable {
     private String user_name;
     private String user_maternal_lastname;
     private String user_lastname;
-    private int user_phone;
+    private String user_phone;
     private String user_city;
     private String user_mail;
     private String user_password;
+
+    private String token;
+
+
     public User(){}
 
-    public User(String user_name, String user_maternal_lastname, String user_lastname, int user_phone, String user_city, String user_mail, String user_password) {
+    public User(long user_id, String user_name, String user_maternal_lastname, String user_lastname, String user_phone, String user_city, String user_mail, String user_password, String token) {
+        this.user_id = user_id;
         this.user_name = user_name;
         this.user_maternal_lastname = user_maternal_lastname;
         this.user_lastname = user_lastname;
@@ -33,6 +38,7 @@ public class User implements Serializable {
         this.user_city = user_city;
         this.user_mail = user_mail;
         this.user_password = user_password;
+        this.token = token;
     }
 
     public long getUser_id() {
@@ -67,11 +73,11 @@ public class User implements Serializable {
         this.user_lastname = user_lastname;
     }
 
-    public int getUser_phone() {
+    public String getUser_phone() {
         return user_phone;
     }
 
-    public void setUser_phone(int user_phone) {
+    public void setUser_phone(String user_phone) {
         this.user_phone = user_phone;
     }
 
@@ -99,6 +105,14 @@ public class User implements Serializable {
         this.user_password = EncryptionUtil.encrypt(user_password);
     }
 
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -106,10 +120,11 @@ public class User implements Serializable {
                 ", user_name='" + user_name + '\'' +
                 ", user_maternal_lastname='" + user_maternal_lastname + '\'' +
                 ", user_lastname='" + user_lastname + '\'' +
-                ", user_phone=" + user_phone +
+                ", user_phone='" + user_phone + '\'' +
                 ", user_city='" + user_city + '\'' +
                 ", user_mail='" + user_mail + '\'' +
                 ", user_password='" + user_password + '\'' +
+                ", token='" + token + '\'' +
                 '}';
     }
 }

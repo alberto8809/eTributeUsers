@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/eTribute")
 public class AccountController {
@@ -43,4 +44,5 @@ public class AccountController {
     public ResponseEntity<Account> addNewAccount(@RequestBody Account userAccount)  {
         return new ResponseEntity<>(accountService.createAccount(userAccount), HttpStatus.CREATED);
     }
+
 }
