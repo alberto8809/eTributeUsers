@@ -26,6 +26,10 @@ public class AccountService {
         return accountRepository.getReferenceById(id);
     }
 
+    public List<Account> getAccountByToken(String token){
+        return accountRepository.getListOfAccountByToken(token);
+    }
+
     public List<Account> getAllAccounts(){
         return accountRepository.findAll();
 

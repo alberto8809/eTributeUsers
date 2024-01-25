@@ -32,6 +32,12 @@ public class AccountController {
         return accountService.getAccountById(account_id);
     }
 
+    @GetMapping( "getAccountByToken/{token}")
+    public List<Account> getAccountByToken(@PathVariable(name="token")  String token){
+        return accountService.getAccountByToken(token);
+    }
+
+
     @GetMapping( "getAllAccounts/")
     public List<Account> getAllAccount(){
         return accountService.getAllAccounts();
@@ -44,5 +50,6 @@ public class AccountController {
     public ResponseEntity<Account> addNewAccount(@RequestBody Account userAccount)  {
         return new ResponseEntity<>(accountService.createAccount(userAccount), HttpStatus.CREATED);
     }
+
 
 }
